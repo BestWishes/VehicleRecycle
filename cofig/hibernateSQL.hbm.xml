@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<sql-query name="departmentGetAll">
+		<![CDATA[
+			select * from department
+		]]>
+	</sql-query>
+		<sql-query name="positionGetAll">
+		<![CDATA[
+			SELECT  * FROM POSITION
+		]]>
+	</sql-query>
+		<sql-query name="employeeGetAll">
+		<![CDATA[
+			select * from employee
+		]]>
+	</sql-query>
+		<sql-query name="employeeGetById">
+		<![CDATA[
+			select * from employee e where e.id=:id 
+		]]>
+	</sql-query>
+	<sql-query name="employeeGetByName">
+		<![CDATA[
+			select * from employee e where e.employeeName=:employeeName
+		]]>
+	</sql-query>
+</hibernate-mapping>

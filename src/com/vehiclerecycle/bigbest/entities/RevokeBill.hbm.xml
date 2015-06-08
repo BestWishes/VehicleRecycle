@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-2 23:21:11 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.vehiclerecycle.bigbest.entities.RevokeBill" table="REVOKEBILL">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="vehicleBasic" class="com.vehiclerecycle.bigbest.entities.VehicleBasic" fetch="join" lazy="false">
+            <column name="VEHICLE_BASIC" />
+        </many-to-one>
+        <property name="revokeReason" type="java.lang.String">
+            <column name="REVOKE_REASON" />
+        </property>
+        <property name="revokeDate" type="java.util.Date">
+            <column name="REVOKE_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

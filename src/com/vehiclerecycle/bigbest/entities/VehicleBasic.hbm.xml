@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-1 23:10:23 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.vehiclerecycle.bigbest.entities.VehicleBasic" table="VEHICLEBASIC">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="server" class="com.vehiclerecycle.bigbest.entities.Employee" fetch="join" lazy="false">
+            <column name="SERVER_ID" />
+        </many-to-one>
+        <many-to-one name="clerk" class="com.vehiclerecycle.bigbest.entities.Employee" fetch="join" lazy="false">
+            <column name="CLERK_ID" />
+        </many-to-one>
+        <property name="vehicleName" type="java.lang.String">
+            <column name="VEHICLE_NAME" />
+        </property>
+        <property name="vehicleType" type="java.lang.String">
+            <column name="VEHICLE_TYPE" />
+        </property>
+        <property name="vehicleLicense" type="java.lang.String">
+            <column name="VEHICLE_LICENSE" />
+        </property>
+        <many-to-one name="client" class="com.vehiclerecycle.bigbest.entities.Client" fetch="join" lazy="false">
+            <column name="CLIENT_ID" />
+        </many-to-one>
+        <property name="contactDate" type="java.util.Date">
+            <column name="CONTACT_DATE" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-13 19:11:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.vehiclerecycle.bigbest.entities.Position" table="POSITION">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="positionName" type="java.lang.String">
+            <column name="POSITION_NAME" />
+        </property>
+        <many-to-one name="department" class="com.vehiclerecycle.bigbest.entities.Department" fetch="join" lazy="false" >
+            <column name="DEPARTMENT_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

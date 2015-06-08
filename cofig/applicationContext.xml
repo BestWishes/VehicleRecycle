@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+	
+	
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="com.vehiclerecycle.bigbest">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>		
+	</context:component-scan>
+	
+	<!-- 配置外部数据库配置信息 -->
+	<context:property-placeholder location="classpath:db.propertities"/>
+	
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	
+		<!-- 指定hibernate配置 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="mappingLocations" value="classpath:com/vehiclerecycle/bigbest/entities/*.hbm.xml"></property>
+		
+		<!-- 配置c3p0数据源 -->
+		<property name="dataSource">
+			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<!-- 配置数据连接信息 -->
+				<property name="jdbcUrl" value="${jdbc.jdbcUrl}" ></property>
+				<property name="driverClass" value="${jdbc.driverClass}"></property>
+				<property name="user" value="${jdbc.user}"></property>
+				<property name="password" value="${jdbc.password}"></property>
+				<property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+				<property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+				<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+				<property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+				<property name="maxStatements" value="${jdbc.maxStatements}"></property>
+				<property name="maxStatementsPerConnection" value="${jdbc.maxStatementsPerConnection}"></property>
+				<property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+			</bean>
+		</property>
+		
+	</bean>
+	
+	<!-- 配置spring事务 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" timeout="3"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.vehiclerecycle.bigbest.service.*.*(..))" id="txPointCut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+	</aop:config>
+	
+	<!-- 配置AOP切点事务 
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	-->
+</beans>
+

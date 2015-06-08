@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-1 15:03:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.vehiclerecycle.bigbest.entities.Storage" table="STORAGE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="storageName" type="java.lang.String">
+            <column name="STORAGE_NAME" />
+        </property>
+        <property name="storageAddress" type="java.lang.String">
+            <column name="STORAGE_ADDRESS" />
+        </property>
+        <property name="storageCapacity" type="java.lang.Integer">
+            <column name="STORAGE_CAPACITY" />
+        </property>
+
+    </class>
+</hibernate-mapping>

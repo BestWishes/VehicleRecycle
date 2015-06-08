@@ -1,0 +1,15 @@
+[{
+  "id":1,
+  "text":"员工管理",
+  "iconCls":"icon-edit",
+  "children":[{
+  	"id":11,
+	"text":"查询所有员工",
+	"iconCls":"icon-edit"
+  },
+  {
+  	"id":11,
+	"text":"新增员工",
+	"iconCls":"icon-edit"
+  }]
+}]

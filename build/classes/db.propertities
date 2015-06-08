@@ -1,0 +1,12 @@
+jdbc.user=root
+jdbc.password=200777
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.jdbcUrl=jdbc:mysql://localhost:3306/vehiclerecycle
+
+jdbc.initialPoolSize=10
+jdbc.maxPoolSize=20
+jdbc.minPoolSize=5
+jdbc.acquireIncrement=3
+jdbc.maxStatements=8
+jdbc.maxStatementsPerConnection=5
+jdbc.maxIdleTime=1800
