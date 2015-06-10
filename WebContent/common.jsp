@@ -11,8 +11,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-easyui-1.3.6/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-easyui-1.3.6/datagrid-detailview.js"></script>
  	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery.jPrintArea.js"></script>
- 	
-
 <title></title>
 </head>
 <body>

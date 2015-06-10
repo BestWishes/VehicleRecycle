@@ -109,11 +109,10 @@ public class Client {
 	}
 	@Override
 	public String toString() {
-		String c=clientType==null?"无":clientType.getTypeName();
 		return "Client [id=" + id + ", name=" + name + ", sex=" + sex
 				+ ", idCard=" + idCard + ", address=" + address + ", tel="
 				+ tel + ", email=" + email + ", job=" + job + ", company="
-				+ company + ", clientType=" + c + "]";
+				+ company + ", clientType=" + clientType.getTypeName() + "]";
 	}
 	
 	

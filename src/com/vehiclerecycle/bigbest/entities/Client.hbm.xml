@@ -32,7 +32,10 @@
         <property name="company" type="java.lang.String">
             <column name="COMPANY" />
         </property>
-        <many-to-one name="clientType" class="com.vehiclerecycle.bigbest.entities.ClientType" fetch="join" lazy="false">
+        <many-to-one name="clientType" 
+       		class="com.vehiclerecycle.bigbest.entities.ClientType" 
+       		fetch="join" 
+        	lazy="false">
             <column name="CLIENT_TYPE" />
         </many-to-one>
     </class>
