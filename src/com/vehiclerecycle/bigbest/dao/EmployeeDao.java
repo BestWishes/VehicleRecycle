@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.vehiclerecycle.bigbest.dao.inf.BaseDao;
 import com.vehiclerecycle.bigbest.dao.inf.InterfaceDao;
 import com.vehiclerecycle.bigbest.entities.Employee;
+import com.vehiclerecycle.bigbest.util.EncryptUtil;
 
 
 @Repository
@@ -36,7 +37,7 @@ public class EmployeeDao extends BaseDao implements InterfaceDao<Employee>{
 	@SuppressWarnings("unchecked")
 	public Employee login(HttpSession session, Employee employee) {
 		String  hqlString="FROM Employee e where e.employeeName=? and e.password=?";
-		List<Employee> emList=this.getSession().createQuery(hqlString).setString(0, employee.getEmployeeName()).setString(1, employee.getPassword()).list();
+		List<Employee> emList=this.getSession().createQuery(hqlString).setString(0, employee.getEmployeeName()).setString(1, EncryptUtil.encrypt(employee.getPassword())).list();
 		if (emList.isEmpty()) 
 		{
 			employee=new Employee();
@@ -60,6 +61,7 @@ public class EmployeeDao extends BaseDao implements InterfaceDao<Employee>{
 		}else{
 			getlogger.error(session.getAttribute(EMPLOYEE_NAME)+",修改用户:"+employee.getEmployeeName()+",用户管理");
 		}
+		employee.setPassword(EncryptUtil.encrypt(employee.getPassword()));
 		this.getSession().saveOrUpdate(employee);
 	}
 
