@@ -2,7 +2,11 @@ package com.vehiclerecycle.bigbest.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * 数据加密工具类
+ * @author Ljj
+ *
+ */
 public class EncryptUtil {
 
 	public static String encrypt(String info) {

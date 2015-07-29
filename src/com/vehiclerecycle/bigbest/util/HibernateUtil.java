@@ -5,7 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
+/**
+ * Hibernate工具类
+ * @author Ljj
+ *
+ */
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
